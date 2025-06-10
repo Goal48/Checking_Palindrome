@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+       
+        .box {
+            background-color: #eeebeb;
+            margin: 200px auto;
+            width: 400px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+        }
+
+        #button {
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: #007bff;
+        }
+        input[type = "text"]{
+            width: 95%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 16px ;
+             box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1 style="font-weight: bolder;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Palindrome Checker
+        </h1>
+        <input type="text" id="inputtext" placeholder="Enter a word or number">
+        <button id="button">check</button>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById("button").addEventListener("click",Palindromechecker);
+        
+        function ispalindrome(str) {
+            const clearstr = str.toLowerCase().replace(/[^a-z0-9]/g,'');
+            const reversestr = clearstr.split('').reverse().join('');
+            return clearstr === reversestr;
+        }
+        function Palindromechecker(){
+            const inputtext = document.getElementById("inputtext");
+            const result = document.getElementById("result");
+            if (ispalindrome(inputtext.value)) {
+               result.innerText = `"${inputtext.value}" is a Palindrome` ;
+            }
+            else{
+                  result.innerText = `"${inputtext.value}" is not a Palindrome` ;
+            }
+            inputtext.value = '';
+        }
+    </script>
+</body>
+
+</html>
